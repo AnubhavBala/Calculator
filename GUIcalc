@@ -1,0 +1,677 @@
+/**
+ * 
+ */
+
+import javax.swing.*;
+import javax.swing.border.Border;
+
+import java.awt.*;
+import java.awt.event.*;
+
+/**
+ * @author Anubhav
+ *
+ */
+public class GUIcalc extends JFrame implements ActionListener {
+
+
+	private JTextField text = new JTextField(10);
+	private JLabel sumfield;
+	private float sum = 0;
+	private float num1 = 0;
+	private float num2 = 0;
+	JButton one = new JButton("1");
+	JButton two = new JButton("2");
+	JButton three = new JButton("3");
+	JButton four = new JButton("4");
+	JButton five = new JButton("5");
+	JButton six = new JButton("6");
+	JButton seven = new JButton("7");
+	JButton eight = new JButton("8");
+	JButton nine = new JButton("9");
+	JButton zero = new JButton("0");
+	JButton multi = new JButton("*");
+	JButton divide = new JButton("/");
+	JButton equal = new JButton("=");
+	JButton add = new JButton("+");
+	JButton subtract = new JButton("-");
+	JButton deci = new JButton(".");
+	private final float number = 18f;
+	private int counter = 0;
+	private float denominator = 1;
+	private float decimalnumber = 0;
+	private int decimalcheck = 0;
+	private int fraction=1;
+
+	/**
+	 * Lays out all the buttons and panels for the calculator
+	 */
+	public GUIcalc() {
+
+		super("Calculator");
+		text.setFont(text.getFont().deriveFont(number));
+		setLayout(null);
+		sumfield = new JLabel("" + sum);
+		sumfield.setLocation(20, -8);
+		sumfield.setSize(245, 45);
+		add(sumfield);
+		seven = new JButton("7");
+		seven.setLocation(0, 50);
+		seven.setSize(50, 50);
+		seven.addActionListener(this);
+		add(seven);
+		eight = new JButton("8");
+		eight.setLocation(55, 50);
+		eight.setSize(50, 50);
+		eight.addActionListener(this);
+		add(eight);
+		nine = new JButton("9");
+		nine.setLocation(110, 50);
+		nine.setSize(50, 50);
+		nine.addActionListener(this);
+		add(nine);
+		divide = new JButton("/");
+		divide.setLocation(165, 50);
+		divide.setSize(50, 50);
+		divide.addActionListener(this);
+		add(divide);
+		six = new JButton("6");
+		six.setLocation(0, 105);
+		six.setSize(50, 50);
+		six.addActionListener(this);
+		add(six);
+		five = new JButton("5");
+		five.setLocation(55, 105);
+		five.setSize(50, 50);
+		five.addActionListener(this);
+		add(five);
+		four = new JButton("4");
+		four.setLocation(110, 105);
+		four.setSize(50, 50);
+		four.addActionListener(this);
+		add(four);
+		multi = new JButton("*");
+		multi.setLocation(165, 105);
+		multi.setSize(50, 50);
+		multi.addActionListener(this);
+		add(multi);
+		three = new JButton("3");
+		three.setLocation(0, 165);
+		three.setSize(50, 50);
+		three.addActionListener(this);
+		add(three);
+		two = new JButton("2");
+		two.setLocation(55, 165);
+		two.setSize(50, 50);
+		two.addActionListener(this);
+		add(two);
+		one = new JButton("1");
+		one.setLocation(110, 165);
+		one.setSize(50, 50);
+		one.addActionListener(this);
+		add(one);
+		add = new JButton("+");
+		add.setLocation(165, 165);
+		add.setSize(50, 50);
+		add.addActionListener(this);
+		add(add);
+		zero = new JButton("0");
+		zero.setLocation(0, 220);
+		zero.setSize(50, 50);
+		zero.addActionListener(this);
+		add(zero);
+		deci = new JButton(".");
+		deci.setLocation(55, 220);
+		deci.setSize(50, 50);
+		deci.addActionListener(this);
+		add(deci);
+		equal = new JButton("=");
+		equal.setLocation(110, 220);
+		equal.setSize(50, 50);
+		equal.addActionListener(this);
+		add(equal);
+		subtract = new JButton("-");
+		subtract.setLocation(165, 220);
+		subtract.setSize(50, 50);
+		subtract.addActionListener(this);
+		add(subtract);
+		setLayout(new BorderLayout(10, 10));
+		add(text, BorderLayout.PAGE_START);
+	}
+
+	/**
+	 * @param e Take in the action key of a button click and computes appropriatly
+	 */
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == one) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 1;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+
+			} else if (counter == 1) {
+				num2 = num2 * 10 + 1;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 1;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 1;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 1;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 1 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		}
+
+		else if (e.getSource() == two) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 2;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 2;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 2;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 2;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 2;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 2 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+
+			}
+		}
+
+		else if (e.getSource() == three) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 3;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 3;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 3;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 3;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 3;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 3 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == four) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 4;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 4;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 4;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 4;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 4;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 4 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == five) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 5;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 5;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 5;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 5;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 5;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 5 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+				;
+			}
+		} else if (e.getSource() == six) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 6;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 6;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 6;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 6;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 6;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 6 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == seven) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 7;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 7;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 7;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 7;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 7;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 5) {
+
+				decimalnumber = 7 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == eight) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 8;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 8;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 8;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 8;
+				sumfield.setText("" + num2);
+
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 8;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 8 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == nine) {
+
+			if (counter == 0) {
+				num1 = num1 * 10 + 9;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10 + 9;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10 + 9;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10 + 9;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10 + 9;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+				decimalnumber = 9 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+			}
+		} else if (e.getSource() == zero) {
+
+			if (counter == 0) {
+				num1 = num1 * 10;
+				sumfield.setText("" + num1);
+				sum = num1;
+				decimalcheck = 1;
+			} else if (counter == 1) {
+
+				num2 = num2 * 10;
+				sumfield.setText("" + num2);
+			} else if (counter == 2) {
+
+				num2 = num2 * 10;
+				sumfield.setText("" + num2);
+			} else if (counter == 3) {
+
+				num2 = num2 * 10;
+				sumfield.setText("" + num2);
+			} else if (counter == 4) {
+
+				num2 = num2 * 10;
+				sumfield.setText("" + num2);
+			} else if (counter == 5) {
+
+				decimalnumber = 0 / (denominator * 10);
+				denominator *= 10;
+				if (decimalcheck == 0) {
+					num2 = num2 + decimalnumber;
+					sumfield.setText("" + num2);
+				} else {
+					num1 = num1 + decimalnumber;
+					sumfield.setText("" + num1);
+					sum = num1;
+				}
+
+			}
+		}
+
+		else if (e.getSource() == add) {
+			if (counter == 2) {
+				sum = sum - num2;
+			} else if (counter == 3) {
+				sum = num2 * sum;
+			} else if (counter == 4) {
+				sum = sum / num2;
+			} else if (counter == 5) {
+				if (fraction == 1) {
+
+					sum = sum + num2;
+
+				} else if (fraction == 2) {
+
+					sum = sum - num2;
+				} else if (fraction == 3) {
+					sum = num2 * sum;
+				} else if (fraction == 4) {
+					sum = sum / num2;
+				}
+
+			}
+			num2 = 0;
+			counter = 0;
+			counter++;
+			sum = sum + num2;
+			sumfield.setText(null);
+			sumfield.setText("" + sum);
+			decimalcheck = 0;
+			fraction = 1;
+		} else if (e.getSource() == subtract) {
+			if (counter == 1) {
+				sum = num2 + sum;
+			} else if (counter == 3) {
+				sum = num2 * sum;
+			} else if (counter == 4) {
+				sum = sum / num2;
+			} else if (counter == 5) {
+				if (fraction == 1) {
+
+					sum = sum + num2;
+
+				} else if (fraction == 2) {
+
+					sum = sum - num2;
+				} else if (fraction == 3) {
+					sum = num2 * sum;
+				} else if (fraction == 4) {
+					sum = sum / num2;
+				}
+
+			}
+			num2 = 0;
+			counter = 0;
+			counter += 2;
+			sum = sum - num2;
+			sumfield.setText(null);
+			sumfield.setText("" + sum);
+			decimalcheck = 0;
+			fraction = 2;
+		} else if (e.getSource() == multi) {
+			if (counter == 1) {
+				sum = num2 + sum;
+			} else if (counter == 2) {
+				sum = sum - num2;
+			} else if (counter == 4) {
+				sum = sum / num2;
+			} else if (counter == 5) {
+				if (fraction == 1) {
+					sum = sum + num2;
+				} else if (fraction == 2) {
+					sum = sum - num2;
+				} else if (fraction == 3) {
+					sum = num2 * sum;
+				} else if (fraction == 4) {
+					sum = sum / num2;
+				}
+
+			}
+			num2 = 1;
+			counter = 0;
+			counter += 3;
+			sum = sum * num2;
+			sumfield.setText(null);
+			sumfield.setText("" + sum);
+			num2 = 0;
+			decimalcheck = 0;
+			fraction = 3;
+		} else if (e.getSource() == divide) {
+			if (counter == 1) {
+				sum = num2 + sum;
+			} else if (counter == 2) {
+				sum = sum - num2;
+			} else if (counter == 3) {
+				sum = num2 * sum;
+			} else if (counter == 5) {
+				if (fraction == 1) {
+
+					sum = sum + num2;
+
+				} else if (fraction == 2) {
+
+					sum = sum - num2;
+				} else if (fraction == 3) {
+					sum = num2 * sum;
+				} else if (fraction == 4) {
+					sum = sum / num2;
+				}
+
+			}
+			num2 = 1;
+			counter = 0;
+			counter += 4;
+			sum = sum / num2;
+			sumfield.setText(null);
+			sumfield.setText("" + sum);
+			num2 = 0;
+			decimalcheck = 0;
+			fraction = 4;
+		} else if (e.getSource() == deci) {
+			counter = 5;
+			denominator = 1;
+		} else if (e.getSource() == equal) {
+			if (counter == 1 || fraction == 1) {
+
+				sum = sum + num2;
+				num2 = 0;
+
+			} else if (counter == 2 || fraction == 2) {
+
+				sum = sum - num2;
+				num2 = 0;
+			} else if (counter == 3 || fraction == 3) {
+				sum = num2 * sum;
+				num2 = 0;
+			} else if (counter == 4 || fraction == 4) {
+				sum = sum / num2;
+				num2 = 1;
+			}
+			sumfield.setText(null);
+			sumfield.setText("" + sum);
+			num1 = 0;
+			sum = 0;
+			counter = 0;
+			denominator = 1;
+			fraction = 1;
+			decimalnumber = 0;
+		}
+
+	}
+
+}
