@@ -1,0 +1,27 @@
+/**
+ * 
+ */
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import java.awt.FlowLayout;
+import javax.swing.JFrame;
+import java.awt.BorderLayout;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+/**
+ * @author Anubhav
+ *
+ */
+public class Calculations {
+
+	/**
+	 * Creates the main frame for the calculator to come on
+	 */
+	public static void main(String[] args) {
+		GUIcalc calc= new GUIcalc();
+		calc.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		calc.setSize(232,308);
+		calc.setVisible(true);
+	}
+
+}
